@@ -13,8 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import include
 from django.urls import path, include
+import rest_framework.urls
 
 urlpatterns = [
-    path('', include('snippets.urls'))
+    path('', include('snippets.urls')),
+    path('', include('posts.urls'))
+]
+
+urlpatterns += [
+    path('auth/', include(rest_framework.urls))
 ]
